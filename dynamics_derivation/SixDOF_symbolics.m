@@ -1,0 +1,20 @@
+% Enter dynamics parameters
+syms t1 t2 t3 real;
+syms t1_dot t2_dot t3_dot real;
+syms t1_ddot t2_ddot t3_ddot real;
+syms g positive;
+syms d1 d4 d6 a1 a2 a3 positive;
+syms m1 m2 m3 positive;
+syms xc1 yc1 zc1 xc2 yc2 zc2 xc3 yc3 zc3 real;
+syms Ixx1 Iyy1 Izz1 Ixy1 Iyz1 Ixz1 real;
+syms Ixx2 Iyy2 Izz2 Ixy2 Iyz2 Ixz2 real;
+syms Ixx3 Iyy3 Izz3 Ixy3 Iyz3 Ixz3 real;
+I1 = [Ixx1 -Ixy1 -Ixz1;
+     -Ixy1 Iyy1 -Iyz1;
+     -Ixz1 -Iyz1 Izz1];
+I2 = [Ixx2 -Ixy2 -Ixz2;
+     -Ixy2 Iyy2 -Iyz2;
+     -Ixz2 -Iyz2 Izz2];
+I3 = [Ixx3 -Ixy3 -Ixz3;
+     -Ixy3 Iyy3 -Iyz3;
+     -Ixz3 -Iyz3 Izz3];
