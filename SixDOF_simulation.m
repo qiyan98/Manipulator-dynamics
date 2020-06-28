@@ -205,26 +205,26 @@ for m = 1:n_t3 % index of configurations
         end
 
         opts = odeset('RelTol', 1e-3,'AbsTol',1e-6,'Refine',6); % debug
-        [t_ode,X_ode] = ode45(SixDOF_Simplified_EOM,[0,MaxTime],X_0,opts); % debug
+%         [t_ode,X_ode] = ode45(SixDOF_Simplified_EOM,[0,MaxTime],X_0,opts); % debug
 
-%         t_ode = 0:1e-3:MaxTime;
-%         opts = sdeset('OutputFUN',@sdeplot,...
-%               'SDEType','Stratonovich',...
-%               'RandSeed',2);
-%         if mode_ctrl == 1 % pid, 3rd order system
-%             X_ode = sde_euler(SixDOF_Simplified_EOM,@(t,y)[0,0,0]',t_ode...
-%             ,X_0,opts);
-%         elseif mode_ctrl == 4||mode_ctrl == 5 % AFNTSM-SF/AFNTSM-LT
-%             X_0t = [FunTheta(t_ode(1));FunThetaDot(t_ode(1));0;0;0];
-%             X_ode = sde_euler(SixDOF_Simplified_EOM,@(t,y)[0,0,0,0,0]',t_ode...
-%             ,X_0t,opts);
-%         else % not pid, 2nd system :openloop/ctc/FNTSM/H-inf
-%             X_ode = sde_euler(SixDOF_Simplified_EOM,@(t,y)[0,0]',t_ode...
-%             ,X_0,opts);
-%         end
-%         
-%         X_ode = sde_milstein(SixDOF_Simplified_EOM,...
-%                 [0,0,0,0,0]',t_ode,X_0,opts);
+        t_ode = 0:1e-3:MaxTime;
+        opts = sdeset('OutputFUN',@sdeplot,...
+              'SDEType','Stratonovich',...
+              'RandSeed',2);
+        if mode_ctrl == 1 % pid, 3rd order system
+            X_ode = sde_euler(SixDOF_Simplified_EOM,@(t,y)[0,0,0]',t_ode...
+            ,X_0,opts);
+        elseif mode_ctrl == 4||mode_ctrl == 5 % AFNTSM-SF/AFNTSM-LT
+            X_0t = [FunTheta(t_ode(1));FunThetaDot(t_ode(1));0;0;0];
+            X_ode = sde_euler(SixDOF_Simplified_EOM,@(t,y)[0,0,0,0,0]',t_ode...
+            ,X_0t,opts);
+        else % not pid, 2nd system :openloop/ctc/FNTSM/H-inf
+            X_ode = sde_euler(SixDOF_Simplified_EOM,@(t,y)[0,0]',t_ode...
+            ,X_0,opts);
+        end
+        
+        X_ode = sde_milstein(SixDOF_Simplified_EOM,...
+                [0,0,0,0,0]',t_ode,X_0,opts);
             
         T2Ddot = gradient(X_ode(:,2),t_ode);
         FricTorq2 = zeros(10,1); % actual friction torque
