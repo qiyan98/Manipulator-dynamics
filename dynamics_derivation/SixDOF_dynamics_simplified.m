@@ -23,10 +23,11 @@ M22 = subs(M22,a2,0.975);
 M22 = eval(M22);
 
 p_para = 1.1;
+p_inertia_para = 0.9;
 M22_real = subs(M22_real,[m2 xc2 yc2 zc2],[p_para*110.698 0.418 0 -0.218]);
-M22_real = subs(M22_real,[Ixy2 Iyz2 Ixz2 Ixx2 Iyy2 Izz2],[0.011 -0.005 -11.122 6.208 35.317 29.285]);
+M22_real = subs(M22_real,[Ixy2 Iyz2 Ixz2 Ixx2 Iyy2 Izz2],[0.011 -0.005 -11.122 6.208 35.317 29.285*p_inertia_para]);
 M22_real = subs(M22_real,[m3 xc3 yc3 zc3],[p_para*250.044 0.156 0.268 -0.001]);
-M22_real = subs(M22_real,[Ixy3 Iyz3 Ixz3 Ixx3 Iyy3 Izz3],[13.428 -1.510 0.559 57.989 11.972 63.456]);
+M22_real = subs(M22_real,[Ixy3 Iyz3 Ixz3 Ixx3 Iyy3 Izz3],[13.428 -1.510 0.559 57.989 11.972 63.456*p_inertia_para]);
 M22_real = subs(M22_real,a2,0.975);
 M22_real = eval(M22_real);
 
@@ -37,9 +38,9 @@ G2 = subs(G2,[Ixy3 Iyz3 Ixz3 Ixx3 Iyy3 Izz3],[13.428 -1.510 0.559 57.989 11.972 
 G2 = subs(G2,[a2 g],[0.975 9.81]);
 
 G2_real = subs(G2_real,[m2 xc2 yc2 zc2],[p_para*110.698 0.418 0 -0.218]);
-G2_real = subs(G2_real,[Ixy2 Iyz2 Ixz2 Ixx2 Iyy2 Izz2],[0.011 -0.005 -11.122 6.208 35.317 29.285]);
+G2_real = subs(G2_real,[Ixy2 Iyz2 Ixz2 Ixx2 Iyy2 Izz2],[0.011 -0.005 -11.122 6.208 35.317 29.285*p_inertia_para]);
 G2_real = subs(G2_real,[m3 xc3 yc3 zc3],[p_para*250.044 0.156 0.268 -0.001]);
-G2_real = subs(G2_real,[Ixy3 Iyz3 Ixz3 Ixx3 Iyy3 Izz3],[13.428 -1.510 0.559 57.989 11.972 63.456]);
+G2_real = subs(G2_real,[Ixy3 Iyz3 Ixz3 Ixx3 Iyy3 Izz3],[13.428 -1.510 0.559 57.989 11.972 63.456*p_inertia_para]);
 G2_real = subs(G2_real,[a2 g],[0.975 9.81]);
 
 DesTorque2 = M22*t2_ddot + G2;
