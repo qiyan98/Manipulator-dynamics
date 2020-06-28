@@ -120,8 +120,8 @@ for m = 1:n_t3 % index of configurations
         Fun_k1 = @(t,X) 80; Fun_k2 = @(t,X) 70;
         mu_0 = 20; mu_1 = 20; mu_2 = 20;
         
-        snr_theta = 30; % fixed
-        snr_thetaDot = 30; % fixed
+        snr_theta = 20; % fixed
+        snr_thetaDot = 20; % fixed
         t_noise = 0.0;
         
         error_pos = @(t,X)(awgn(X(1),snr_theta,'measured',S) - FunTheta(t)+...
