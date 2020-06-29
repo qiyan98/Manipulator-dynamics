@@ -23,11 +23,11 @@ clear tmpvec tmpindices vec_markerindices;
 % end of pos.
 xlabel('Time (s)','fontsize',ha_fontsize);
 ylabel('Position tracking error (rad)','fontsize',ha_fontsize);
-y_lim_pos = [-1e-3 4e-3];
+y_lim_pos = [-2e-3 6e-3];
 ylim(y_lim_pos);
 l1 = line([6.8 6.8],ylim,'color','blue','linestyle','--','linewidth',0.8*ha_linewidth);
 l2 = line([7.4 7.4],ylim,'color','black','linestyle','-.','linewidth',0.8*ha_linewidth);
-legend('AFNTSM (continuous time)','location','best');
+legend('AFNTSM (continuous time)','location','south');
 set(gca,'children',[l0 l1 l2]);
 
 %%%%% third plot %%%%%
@@ -42,13 +42,13 @@ end
 n_plot = 3;
 l0 = plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
 % end of vel.
-y_lim_vel = [-0.02,0.025];
+y_lim_vel = [-0.04,0.08];
 ylim(y_lim_vel);
 xlabel('Time (s)','fontsize',ha_fontsize);
 ylabel('Velocity tracking error (rad/s)','fontsize',ha_fontsize);
 l1 = line([6.8 6.8],ylim,'color','blue','linestyle','--','linewidth',0.8*ha_linewidth);
 l2 = line([7.4 7.4],ylim,'color','black','linestyle','-.','linewidth',0.8*ha_linewidth);
-legend('AFNTSM (continuous time)','location','best');
+legend('AFNTSM (continuous time)','location','south');
 set(gca,'children',[l0 l1 l2]);
 
 
@@ -56,7 +56,7 @@ set(gca,'children',[l0 l1 l2]);
 axes(ha(2));
 hold on; grid on; box on;
 % DT-50dB-AFNTSM
-load('.mat data backup\DT-50dB\SixDOF_simData_afntsm_lt.mat');
+load('.mat data backup\DT-30dB\SixDOF_simData_afntsm_lt.mat');
 % pos.
 n_points = 10;
 for n_tmp = 1:n_points
@@ -73,7 +73,7 @@ ylim(y_lim_pos);
 xlabel('Time (s)','fontsize',ha_fontsize);
 l1 = line([6.8 6.8],ylim,'color','blue','linestyle','--','linewidth',0.8*ha_linewidth);
 l2 = line([7.4 7.4],ylim,'color','black','linestyle','-.','linewidth',0.8*ha_linewidth);
-legend('AFNTSM (discrete time)','location','best');
+legend('AFNTSM (discrete time)','location','south');
 set(gca,'children',[l0 l1 l2]);
 
 %%%%% fourth plot %%%%%
@@ -92,7 +92,7 @@ ylim(y_lim_vel);
 xlabel('Time (s)','fontsize',ha_fontsize);
 l1 = line([6.8 6.8],ylim,'color','blue','linestyle','--','linewidth',0.8*ha_linewidth);
 l2 = line([7.4 7.4],ylim,'color','black','linestyle','-.','linewidth',0.8*ha_linewidth);
-legend('AFNTSM (discrete time)','location','best');
+legend('AFNTSM (discrete time)','location','south');
 set(gca,'children',[l0 l1 l2]);
 
 axes(ha(3));
@@ -101,7 +101,7 @@ text(xpos,ypos,'\it (a)','fontweight','bold','units','normalized','fontsize',ha_
 n_plot = 2;
 
 load('.mat data backup\CT-50dB\SixDOF_simData_afntsm_lt.mat');
-annotation('rectangle',[.12 .25 .091 .07],'Color','red','linewidth',ha_linewidth);
+annotation('rectangle',[.12 .17 .091 .16],'Color','red','linewidth',ha_linewidth);
 annotation('arrow',[.21,.22],[.31,.37],'units','normalized','Color','red');
 h3=axes('position',[0.16 0.38 0.2 0.1]);
 for n_tmp = 1:n_points
@@ -113,12 +113,12 @@ end
 n_plot = n_plot + 1;
 axes(h3);
 plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
-y_lim3 = [-0.5e-2,0.5e-2];
+y_lim3 = [-3e-2,3e-2];
 xlim([0.5,3]); ylim(y_lim3);
 set(gca,'xtick',[0.5:0.5:3]);
 
-load('.mat data backup\DT-50dB\SixDOF_simData_afntsm_lt.mat');
-annotation('rectangle',[.59 .25 .091 .07],'Color','red','linewidth',ha_linewidth);
+load('.mat data backup\DT-30dB\SixDOF_simData_afntsm_lt.mat');
+annotation('rectangle',[.59 .17 .091 .16],'Color','red','linewidth',ha_linewidth);
 annotation('arrow',[.68,.69],[.32,.37],'units','normalized','Color','red');
 h4=axes('position',[0.625 0.38 0.2 0.1]);
 for n_tmp = 1:n_points
@@ -152,7 +152,7 @@ l00 = plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_l
 n_plot = n_plot + 2;
 clear tmpvec tmpindices vec_markerindices;
 
-load('.mat data backup\DT-50dB\SixDOF_simData_afntsm_lt.mat');
+load('.mat data backup\DT-30dB\SixDOF_simData_afntsm_lt.mat');
 for n_tmp = 1:n_points
     tmpvec = data{m,j,1} - (n_tmp-1+rand)*MaxTime/n_points;
     tmpvec = abs(tmpvec);
@@ -165,7 +165,7 @@ clear tmpvec tmpindices vec_markerindices;
 
 xlim([6.795 6.82]);
 % xlabel('Time (s)','fontsize',ha_fontsize);
-ylim([-4e-3,5e-3]);
+ylim([-2e-2,2e-2]);
 ylabel('Velocity tracking error (rad/s)','fontsize',ha_fontsize-2);
 l1 = line([6.8 6.8],ylim,'color','blue','linestyle','--','linewidth',0.8*ha_linewidth);
 legend('AFNTSM (continuous time)','AFNTSM (discrete time)','location','southwest','numcolumns',2);
@@ -191,7 +191,7 @@ l00 = plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_l
 n_plot = n_plot + 2;
 clear tmpvec tmpindices vec_markerindices;
 
-load('.mat data backup\DT-50dB\SixDOF_simData_afntsm_lt.mat');
+load('.mat data backup\DT-30dB\SixDOF_simData_afntsm_lt.mat');
 for n_tmp = 1:n_points
     tmpvec = data{m,j,1} - (n_tmp-1+rand)*MaxTime/n_points;
     tmpvec = abs(tmpvec);
@@ -203,7 +203,7 @@ n_plot = n_plot + 1;
 clear tmpvec tmpindices vec_markerindices;
 
 xlim([7.35 7.6]);
-ylim([-2e-2,3e-2]);
+ylim([-3e-2,4e-2]);
 l2 = line([7.4 7.4],ylim,'color','black','linestyle','-.','linewidth',0.8*ha_linewidth);
 legend('AFNTSM (continuous time)','AFNTSM (discrete time)','location','southwest','numcolumns',2);
 set(gca,'child',[l01 l00 l2]);
