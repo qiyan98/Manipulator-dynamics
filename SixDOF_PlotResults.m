@@ -74,3 +74,5 @@ SixDOF_PlotResults_fricTorq();
 % plot(t_ode,X_ode(:,4));
 % plot(t_ode,X_ode(:,5));
 % legend('Estimated UB','a_0','a_1','a_2','location','best');
+%% Discrete-time and continuous-time control comparison
+SixDOF_PlotResults_dtctCmp();
