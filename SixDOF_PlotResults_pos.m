@@ -155,7 +155,8 @@ l0 = plot(data{m,j,1},control_error{m,j,1},cell_linespec{n_plot},'color',cell_li
 max_error_lsmc = [max(abs(control_error{m,j,1})) max(abs(control_error{m,j,2}))];
 n_plot = n_plot + 1;
 % end of LSMC
-y_lim2 = y_lim;
+% y_lim2 = y_lim;
+y_lim2 = [-0.06,0.06];
 ylim(y_lim2);
 xlabel('Time (s)','fontsize',ha_fontsize);
 ylabel('Position tracking error (rad)','fontsize',ha_fontsize);

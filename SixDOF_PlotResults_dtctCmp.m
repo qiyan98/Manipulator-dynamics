@@ -8,8 +8,8 @@ n_plot = 1;
 %%%%% first subplot %%%%%
 axes(ha(1));
 hold on; grid on; box on;
-% CT-50dB-AFNTSM
-load('.mat data backup\CT-50dB\SixDOF_simData_afntsm_lt.mat');
+% CT-30dB-AFNTSM
+load('.mat data backup\CT-30dB\SixDOF_simData_afntsm_lt.mat');
 % pos.
 n_points = 10;
 for n_tmp = 1:n_points
@@ -55,7 +55,7 @@ set(gca,'children',[l0 l1 l2]);
 %%%%% second subplot %%%%%
 axes(ha(2));
 hold on; grid on; box on;
-% DT-50dB-AFNTSM
+% DT-30dB-AFNTSM
 load('.mat data backup\DT-30dB\SixDOF_simData_afntsm_lt.mat');
 % pos.
 n_points = 10;
@@ -98,40 +98,40 @@ set(gca,'children',[l0 l1 l2]);
 axes(ha(3));
 text(xpos,ypos,'\it (a)','fontweight','bold','units','normalized','fontsize',ha_fontsize);
 %% plot magnified curve
-n_plot = 2;
+% n_plot = 2;
 
-load('.mat data backup\CT-50dB\SixDOF_simData_afntsm_lt.mat');
-annotation('rectangle',[.12 .17 .091 .16],'Color','red','linewidth',ha_linewidth);
-annotation('arrow',[.21,.22],[.31,.37],'units','normalized','Color','red');
-h3=axes('position',[0.16 0.38 0.2 0.1]);
-for n_tmp = 1:n_points
-    tmpvec = data{m,j,1} - (n_tmp-1+rand);
-    tmpvec = abs(tmpvec);
-    [tmpvec,tmpindices] = sort(tmpvec);
-    vec_markerindices(n_tmp) = tmpindices(1);
-end
-n_plot = n_plot + 1;
-axes(h3);
-plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
-y_lim3 = [-3e-2,3e-2];
-xlim([0.5,3]); ylim(y_lim3);
-set(gca,'xtick',[0.5:0.5:3]);
+% load('.mat data backup\CT-30dB\SixDOF_simData_afntsm_lt.mat');
+% annotation('rectangle',[.12 .17 .091 .16],'Color','red','linewidth',ha_linewidth);
+% annotation('arrow',[.21,.22],[.31,.37],'units','normalized','Color','red');
+% h3=axes('position',[0.16 0.38 0.2 0.1]);
+% for n_tmp = 1:n_points
+%     tmpvec = data{m,j,1} - (n_tmp-1+rand);
+%     tmpvec = abs(tmpvec);
+%     [tmpvec,tmpindices] = sort(tmpvec);
+%     vec_markerindices(n_tmp) = tmpindices(1);
+% end
+% n_plot = n_plot + 1;
+% axes(h3);
+% plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
+% y_lim3 = [-3e-2,3e-2];
+% xlim([0.5,3]); ylim(y_lim3);
+% set(gca,'xtick',[0.5:0.5:3]);
 
-load('.mat data backup\DT-30dB\SixDOF_simData_afntsm_lt.mat');
-annotation('rectangle',[.59 .17 .091 .16],'Color','red','linewidth',ha_linewidth);
-annotation('arrow',[.68,.69],[.32,.37],'units','normalized','Color','red');
-h4=axes('position',[0.625 0.38 0.2 0.1]);
-for n_tmp = 1:n_points
-    tmpvec = data{m,j,1} - (n_tmp-1+rand);
-    tmpvec = abs(tmpvec);
-    [tmpvec,tmpindices] = sort(tmpvec);
-    vec_markerindices(n_tmp) = tmpindices(1);
-end
-n_plot = n_plot + 1;
-axes(h4);
-plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
-xlim([0.5,3]); ylim(y_lim3);
-set(gca,'xtick',[0.5:0.5:3]);
+% load('.mat data backup\DT-30dB\SixDOF_simData_afntsm_lt.mat');
+% annotation('rectangle',[.59 .17 .091 .16],'Color','red','linewidth',ha_linewidth);
+% annotation('arrow',[.68,.69],[.32,.37],'units','normalized','Color','red');
+% h4=axes('position',[0.625 0.38 0.2 0.1]);
+% for n_tmp = 1:n_points
+%     tmpvec = data{m,j,1} - (n_tmp-1+rand);
+%     tmpvec = abs(tmpvec);
+%     [tmpvec,tmpindices] = sort(tmpvec);
+%     vec_markerindices(n_tmp) = tmpindices(1);
+% end
+% n_plot = n_plot + 1;
+% axes(h4);
+% plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
+% xlim([0.5,3]); ylim(y_lim3);
+% set(gca,'xtick',[0.5:0.5:3]);
 
 %% Disturbance rejection
 figure;
@@ -139,7 +139,7 @@ ha = tightPlots(2,1,6.85*0.9,[5 2.5],[0.5 0.4],[0.8 0.2], [0.7 0.2],'inch');
 %%%%% first plot %%%%%
 axes(ha(1));
 hold on; box on;grid on;
-load('.mat data backup\CT-50dB\SixDOF_simData_afntsm_lt.mat');
+load('.mat data backup\CT-30dB\SixDOF_simData_afntsm_lt.mat');
 n_plot = 1;
 n_points = 1200;
 for n_tmp = 1:n_points
@@ -178,7 +178,7 @@ a1.Color = 'b';
 %%%%% second plot %%%%%
 axes(ha(2));
 hold on; box on; grid on;
-load('.mat data backup\CT-50dB\SixDOF_simData_afntsm_lt.mat');
+load('.mat data backup\CT-30dB\SixDOF_simData_afntsm_lt.mat');
 n_plot = 1;
 n_points = 100;
 for n_tmp = 1:n_points

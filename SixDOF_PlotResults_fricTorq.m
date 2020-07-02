@@ -115,7 +115,8 @@ l0 = plot(data{m,j,1},data{m,j,7},cell_linespec{n_plot},'color',cell_linecolor{n
 max_error_lsmc = [max(abs(control_error{m,j,1})) max(abs(control_error{m,j,2}))];
 n_plot = n_plot + 1;
 % end of LSMC
-y_lim2 = [-400,800];
+y_lim2 = [-1000,1000];
+% y_lim2 = y_lim;
 xlim(x_lim);
 ylim(y_lim2);
 xlabel('Time (s)','fontsize',ha_fontsize);

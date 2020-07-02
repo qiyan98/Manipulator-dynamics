@@ -111,8 +111,7 @@ clear tmpvec tmpindices vec_markerindices;
 % end of AFNTSM_LT
 xlabel('Time (s)','fontsize',ha_fontsize);
 ylabel('Velocity tracking error (rad/s)','fontsize',ha_fontsize);
-% y_lim = [-5e-3 8e-3];
-y_lim = [-5e-2,8e-2];
+y_lim = [-4e-2,6e-2];
 ylim(y_lim);
 l1 = line([6.8 6.8],ylim,'color','blue','linestyle','--','linewidth',0.8*ha_linewidth);
 l2 = line([7.4 7.4],ylim,'color','black','linestyle','-.','linewidth',0.8*ha_linewidth);
@@ -158,9 +157,7 @@ max_error_lsmc = [max(abs(control_error{m,j,1})) max(abs(control_error{m,j,2}))]
 n_plot = n_plot + 1;
 clear tmpvec tmpindices vec_markerindices;
 % end of LSMC
-y_lim2 = y_lim;
-% y_lim2 = [-0.01 0.025];
-% y_lim2 = [-5e-2,7e-2];
+y_lim2 = [-0.3,0.3];
 ylim(y_lim2);
 xlabel('Time (s)','fontsize',ha_fontsize);
 ylabel('Velocity tracking error (rad/s)','fontsize',ha_fontsize);
@@ -193,8 +190,12 @@ set(gca,'children',[l0 l1 l2]);
 
 axes(ha(3));
 text(xpos,ypos,'\it (b)','fontweight','bold','units','normalized','fontsize',ha_fontsize);
-%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% plot magnified curve %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 load SixDOF_simData_afntsm_lt.mat;
 for n_tmp = 1:n_points
     tmpvec = data{m,j,1} - (n_tmp-1+rand);
@@ -202,19 +203,21 @@ for n_tmp = 1:n_points
     [tmpvec,tmpindices] = sort(tmpvec);
     vec_markerindices(n_tmp) = tmpindices(1);
 end
-annotation('rectangle',[.13 .72 .08 .07],'Color','red','linewidth',ha_linewidth);
-annotation('arrow',[.21,.23],[.79,.84],'units','normalized','Color','red');
-h1=axes('position',[0.165 0.855 0.2 0.1]); hold on; box on;
+annotation('rectangle',[.14 .72 .02 .05],'Color','red','linewidth',ha_linewidth);
+annotation('arrow',[.16,.19],[.77,.84],'units','normalized','Color','red');
+h1=axes('position',[0.165 0.84 0.2 0.1]); hold on; box on;
 n_plot = 1;
 axes(h1);
 plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
-y_lim3 = [-4e-3,8e-3];
-xlim([0.5,3]); ylim(y_lim3);
-set(gca,'xtick',[0.5:0.5:3]);
+y_lim3 = [-0.004,0.01];
+x_lim = [0.98,1.07];
+xlim(x_lim); ylim(y_lim3);
+set(gca,'xtick',[0.5:0.05:3]);
 
-annotation('rectangle',[.6 .72 .08 .07],'Color','red','linewidth',ha_linewidth);
-annotation('arrow',[.68,.69],[.79,.84],'units','normalized','Color','red');
-h2=axes('position',[0.63 0.855 0.2 0.1]);
+annotation('rectangle',[.61 .72 .02 .05],'Color','red','linewidth',ha_linewidth);
+annotation('arrow',[.63,.65],[.77,.84],'units','normalized','Color','red');
+
+h2=axes('position',[0.63 0.84 0.2 0.1]);
 load SixDOF_simData_afntsm_sf.mat;
 for n_tmp = 1:n_points
     tmpvec = data{m,j,1} - (n_tmp-1+rand);
@@ -225,12 +228,12 @@ end
 n_plot = n_plot + 1;
 axes(h2);
 plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
-xlim([0.5,3]); ylim(y_lim3);
-set(gca,'xtick',[0.5:0.5:3]);
+xlim(x_lim); ylim(y_lim3);
+set(gca,'xtick',[0.5:0.05:3]);
 
-annotation('rectangle',[.13 .24 .08 .07],'Color','red','linewidth',ha_linewidth);
-annotation('arrow',[.21,.22],[.31,.37],'units','normalized','Color','red');
-h3=axes('position',[0.16 0.38 0.2 0.1]);
+annotation('rectangle',[.14 .28 .02 .05],'Color','red','linewidth',ha_linewidth);
+annotation('arrow',[.16,.19],[.31,.365],'units','normalized','Color','red');
+h3=axes('position',[0.16 0.365 0.2 0.1]);
 load SixDOF_simData_lsmc.mat;
 for n_tmp = 1:n_points
     tmpvec = data{m,j,1} - (n_tmp-1+rand);
@@ -241,26 +244,24 @@ end
 n_plot = n_plot + 1;
 axes(h3);
 plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
-y_lim3 = [-3e-2,2e-2];
-xlim([0.5,3]); ylim(y_lim3);
-set(gca,'xtick',[0.5:0.5:3]);
+xlim(x_lim); ylim(y_lim3);
+set(gca,'xtick',[0.5:0.05:3]);
 
-annotation('rectangle',[.6 .17 .08 .165],'Color','red','linewidth',ha_linewidth);
-annotation('arrow',[.68,.69],[.335,.37],'units','normalized','Color','red');
-h4=axes('position',[0.625 0.38 0.2 0.1]);
-load SixDOF_simData_ctc.mat;
-for n_tmp = 1:n_points
-    tmpvec = data{m,j,1} - (n_tmp-1+rand);
-    tmpvec = abs(tmpvec);
-    [tmpvec,tmpindices] = sort(tmpvec);
-    vec_markerindices(n_tmp) = tmpindices(1);
-end
-n_plot = n_plot + 1;
-axes(h4);
-plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
-y_lim3 = [-3e-2,2e-2];
-xlim([0.5,3]); ylim(y_lim3);
-set(gca,'xtick',[0.5:0.5:3]);
+% annotation('rectangle',[.6 .17 .08 .165],'Color','red','linewidth',ha_linewidth);
+% annotation('arrow',[.68,.69],[.335,.37],'units','normalized','Color','red');
+% h4=axes('position',[0.625 0.38 0.2 0.1]);
+% load SixDOF_simData_ctc.mat;
+% for n_tmp = 1:n_points
+%     tmpvec = data{m,j,1} - (n_tmp-1+rand);
+%     tmpvec = abs(tmpvec);
+%     [tmpvec,tmpindices] = sort(tmpvec);
+%     vec_markerindices(n_tmp) = tmpindices(1);
+% end
+% n_plot = n_plot + 1;
+% axes(h4);
+% plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_linecolor{n_plot},'MarkerIndices',vec_markerindices,'linewidth',ha_linewidth);
+% xlim(x_lim); ylim(y_lim3);
+% set(gca,'xtick',[0.5:0.05:3]);
 %% Disturbance rejection
 figure;
 ha = tightPlots(2,1,6.85*0.9,[5 2.5],[0.5 0.4],[0.6 0.2], [0.7 0.2],'inch');
@@ -317,9 +318,9 @@ xlim([6.795 6.82]);
 % xlabel('Time (s)','fontsize',ha_fontsize);
 ylabel('Velocity tracking error (rad/s)','fontsize',ha_fontsize-2);
 l1 = line([6.8 6.8],ylim,'color','blue','linestyle','--','linewidth',0.8*ha_linewidth);
-legend('AFNTSM','AFNTSM-SF','LSMC','CTC','location','southwest','numcolumns',2);
+legend('AFNTSM','AFNTSM-SF','LSMC','CTC','location','best','numcolumns',2);
 set(gca,'child',[l03 l02 l01 l00 l1]);
-a1 = annotation('textarrow',[0.33 0.285],0.68*[1 1],'String','Temperature rise ');
+a1 = annotation('textarrow',[0.33 0.285],0.75*[1 1],'String','Temperature rise ');
 a1.FontSize = ha_fontsize;
 a1.Color = 'b';
 
@@ -372,7 +373,7 @@ l03 = plot(data{m,j,1},control_error{m,j,2},cell_linespec{n_plot},'color',cell_l
 n_plot = n_plot + 1;
 clear tmpvec tmpindices vec_markerindices;
 xlim([7.35 7.6]);
-ylim([-0.04 0.1]);
+% ylim([-0.04 0.1]);
 l2 = line([7.4 7.4],ylim,'color','black','linestyle','-.','linewidth',0.8*ha_linewidth);
 legend('AFNTSM','AFNTSM-SF','LSMC','CTC','location','northwest','numcolumns',2);
 set(gca,'child',[l03 l02 l01 l00 l2]);

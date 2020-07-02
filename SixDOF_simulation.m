@@ -90,7 +90,7 @@ end
 % 2nd dimension - different temperature
 % 3rd dimension - t-X-t2_ddot-FricTorq
 
-S = RandStream('mt19937ar','Seed',5489); % randstream for awgn
+S = RandStream('mt19937ar','Seed',12345); % randstream for awgn
 
 % Solve the equation of motion by ode45 and collect its results
 FunDesTorque2_backup = FunDesTorque2;
@@ -120,8 +120,8 @@ for m = 1:n_t3 % index of configurations
         Fun_k1 = @(t,X) 80; Fun_k2 = @(t,X) 70;
         mu_0 = 20; mu_1 = 20; mu_2 = 20;
         
-        snr_theta = 20; % fixed
-        snr_thetaDot = 20; % fixed
+        snr_theta = 30; % fixed
+        snr_thetaDot = 30; % fixed
         t_noise = 0.0;
         
         error_pos = @(t,X)(awgn(X(1),snr_theta,'measured',S) - FunTheta(t)+...
@@ -204,7 +204,7 @@ for m = 1:n_t3 % index of configurations
             SixDOF_Simplified_EOM = @(t,X)[X(2);FunVaryingM22_real(t)^-1*FunU(t,X)];
         end
 
-        opts = odeset('RelTol', 1e-3,'AbsTol',1e-6,'Refine',6); % debug
+%         opts = odeset('RelTol', 1e-3,'AbsTol',1e-6,'Refine',6); % debug
 %         [t_ode,X_ode] = ode45(SixDOF_Simplified_EOM,[0,MaxTime],X_0,opts); % debug
 
         t_ode = 0:1e-3:MaxTime;
