@@ -18,21 +18,21 @@ save SixDOF_traj.mat FunTheta MaxTime this_tem this_t3;
 % clear; load SixDOF_traj.mat;
 % SixDOF_simulation([this_tem],[this_t3]./57.3,FunTheta,MaxTime,'pid','error');
 % 
-clear; load SixDOF_traj.mat;
-disp('Simulation on CTC...');
-SixDOF_simulation([this_tem],[this_t3]./57.3,FunTheta,MaxTime,'ctc','error');
+% clear; load SixDOF_traj.mat;
+% disp('Simulation on CTC...');
+% SixDOF_simulation([this_tem],[this_t3]./57.3,FunTheta,MaxTime,'ctc','error');
 % 
 % clear; load SixDOF_traj.mat;
 % SixDOF_simulation([this_tem],[this_t3]./57.3,FunTheta,MaxTime,'fntsm','error');
 % 
 % 
-clear; load SixDOF_traj.mat;
-disp('Simulation on LSMC...');
-SixDOF_simulation([this_tem],[this_t3]./57.3,FunTheta,MaxTime,'lsmc','error');
+% clear; load SixDOF_traj.mat;
+% disp('Simulation on LSMC...');
+% SixDOF_simulation([this_tem],[this_t3]./57.3,FunTheta,MaxTime,'lsmc','error');
 % % 
-clear; load SixDOF_traj.mat;
-disp('Simulation on AFNTSM-SF...');
-SixDOF_simulation([this_tem],[this_t3]./57.3,FunTheta,MaxTime,'afntsm_sf','error');
+% clear; load SixDOF_traj.mat;
+% disp('Simulation on AFNTSM-SF...');
+% SixDOF_simulation([this_tem],[this_t3]./57.3,FunTheta,MaxTime,'afntsm_sf','error');
 % % % 
 clear; load SixDOF_traj.mat;
 disp('Simulation on AFNTSM-LT...');
