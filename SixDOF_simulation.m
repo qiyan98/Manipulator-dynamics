@@ -90,7 +90,7 @@ end
 % 2nd dimension - different temperature
 % 3rd dimension - t-X-t2_ddot-FricTorq
 
-S = RandStream('mt19937ar','Seed',12345); % randstream for awgn
+S = RandStream('mt19937ar','Seed',5); % randstream for awgn
 
 % Solve the equation of motion by ode45 and collect its results
 FunDesTorque2_backup = FunDesTorque2;
@@ -222,9 +222,6 @@ for m = 1:n_t3 % index of configurations
             X_ode = sde_euler(SixDOF_Simplified_EOM,@(t,y)[0,0]',t_ode...
             ,X_0,opts);
         end
-        
-        X_ode = sde_milstein(SixDOF_Simplified_EOM,...
-                [0,0,0,0,0]',t_ode,X_0,opts);
             
         T2Ddot = gradient(X_ode(:,2),t_ode);
         FricTorq2 = zeros(10,1); % actual friction torque

@@ -171,7 +171,7 @@ l1 = line([6.8 6.8],ylim,'color','blue','linestyle','--','linewidth',0.8*ha_line
 legend('AFNTSM (continuous time)','AFNTSM (discrete time)','location','southwest','numcolumns',2);
 
 set(gca,'child',[l01 l00 l1]);
-a1 = annotation('textarrow',[0.33 0.285],0.85*[1 1],'String','Temperature rise ');
+a1 = annotation('textarrow',[0.33 0.285],0.65*[1 1],'String','Temperature rise ');
 a1.FontSize = ha_fontsize;
 a1.Color = 'b';
 
@@ -209,10 +209,10 @@ legend('AFNTSM (continuous time)','AFNTSM (discrete time)','location','southwest
 set(gca,'child',[l01 l00 l2]);
 xlabel('Time (s)','fontsize',ha_fontsize);
 ylabel('Velocity tracking error (rad/s)','fontsize',ha_fontsize-2);
-a2 = annotation('textarrow',[0.33 0.285],0.18*[1 1],'String','External shock start');
+a2 = annotation('textarrow',[0.33 0.285],0.21*[1 1],'String','External shock start');
 a2.FontSize = ha_fontsize;
 a2.Color = 'k';
-a3 = annotation('textarrow',[0.58 0.625],0.21*[1 1],'String','External shock end ');
+a3 = annotation('textarrow',[0.58 0.625],0.24*[1 1],'String','External shock end ');
 a3.FontSize = ha_fontsize;
 a3.Color = 'k';
 
